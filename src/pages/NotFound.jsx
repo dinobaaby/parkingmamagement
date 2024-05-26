@@ -2,25 +2,24 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "../assets/styles/Notfound.module.scss";
 const cx = classNames.bind(styles);
-import animation from "../assets/images/jaconda-17.gif";
 export default function NotFound() {
-    return (
-        <div className={cx("notfound-page")}>
-            <div className={cx("notfound-container")}>
-                <div className={cx("notfound-title")}>
-                    <img src={animation} alt="" />
-                </div>
-                <div className={cx("notfound-actions")}>
-                    <span>Somethings error</span>
-                    <p>
-                        Sorry, the page you are looking for could not be found.
-                    </p>
-                    <div className={cx("btn-actions")}>
-                        <button className={cx("btn-backtohome")}>Home</button>
-                        <button className={cx("btn-login")}>Login</button>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div id={cx("notfound")}>
+      <div className={cx("notfound")}>
+        <div className={cx("notfound-404")}>
+          <h1>
+            <span>4</span>
+            <span>0</span>
+            <span>4</span>
+          </h1>
         </div>
-    );
+        <h2>We are sorry, Page not found!</h2>
+        <p>
+          The page you are looking for might have been removed had its name
+          changed or is temporarily unavailable.
+        </p>
+        <a href="/">Back To Homepage</a>
+      </div>
+    </div>
+  );
 }
