@@ -1,0 +1,57 @@
+.dashboardlayout {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background: #f9fafb;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.sidebar {
+    position: relative;
+    min-width: 250px;
+    padding: 10px;
+    border-right: 1px solid #e7e7e7;
+}
+.sidebar-footer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    align-items: center;
+    border-radius: 10px;
+    padding: 15px 20px;
+    background-color: rgb(187, 187, 187);
+    font-size: 14px;
+    color: white;
+    gap: 20px;
+}
+
+/* Start header */
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+header .btn-opensidebar {
+    border: none;
+    background: none;
+    font-size: 20px;
+}
+
+header .header-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}

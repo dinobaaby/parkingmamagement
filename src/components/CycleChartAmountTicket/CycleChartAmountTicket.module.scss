@@ -1,0 +1,41 @@
+.charts {
+    width: 100%;
+    height: 400px;
+
+    .piechart {
+        display: flex;
+        height: 400px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px 20px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+        .piechart-header h2 {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+        div:nth-child(2) > svg {
+            display: flex;
+            margin-left: 90px;
+            align-items: center;
+            justify-content: center;
+        }
+        .piechart-lable {
+            display: flex;
+            flex-direction: row;
+
+            gap: 20px;
+            .piechart-item {
+                font-size: 12px;
+            }
+        }
+    }
+
+    @media (max-width: 980px) {
+    }
+}

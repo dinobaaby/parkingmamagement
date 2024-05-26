@@ -1,0 +1,20 @@
+.header-action-notifications {
+    position: relative;
+}
+.header-action-notifications .notification-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.header-action-notifications .notification-icon span {
+    position: absolute;
+    top: -2px;
+    right: 0px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: red;
+    text-align: center;
+    font-size: 10px;
+    color: white;
+}

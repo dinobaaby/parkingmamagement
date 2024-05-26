@@ -1,0 +1,147 @@
+.ticket-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0px 20px;
+    .header h2 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .actions-ticket {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+
+        .input-search-gr {
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            .input-search-platenb {
+                width: 90%;
+                border: none;
+                outline: none;
+                padding: 10px 10px;
+                font-size: 14px;
+                background: none;
+            }
+
+            select {
+                width: 90%;
+                border: none;
+                outline: none;
+                padding: 10px 10px;
+                font-size: 14px;
+                color: #a1a1a1;
+                option {
+                    padding: 10px 20px;
+                }
+            }
+        }
+        .btn-create {
+            width: 20%;
+            padding: 10px 20px;
+            background-color: #1cbe65;
+            border: 1px solid #1cbe65;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            border-radius: 5px;
+        }
+    }
+
+    .table-container {
+        // overflow-x: auto;
+        .table-ticket {
+            table-layout: fixed;
+            width: 100%;
+
+            border: 1px solid #ccc;
+            thead {
+                height: 50px;
+                background-color: #1cbe65;
+
+                tr {
+                    th {
+                        padding: 10px 0px;
+                        font-size: 14px;
+
+                        text-align: center;
+                        font-size: 14px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        padding: 10px 0px;
+                        font-size: 14px;
+                        color: #a1a1a1;
+                        text-align: center;
+                        border: 1px solid #ccc;
+                    }
+                    td:hover {
+                        background-color: #fff842;
+                        color: #403e10;
+                        font-weight: bold;
+                        box-shadow: #7f7c21 -1px 1px, #7f7c21 -2px 2px,
+                            #7f7c21 -3px 3px, #7f7c21 -4px 4px, #7f7c21 -5px 5px,
+                            #7f7c21 -6px 6px;
+                        transform: translate3d(6px, -6px, 0);
+                        transition-delay: 0s;
+                        transition-duration: 0.4s;
+                        transition-property: all;
+                        transition-timing-function: line;
+                    }
+
+                    td:last-child {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        gap: 10px;
+                        button {
+                            padding: 5px 10px;
+                            border: none;
+                            border-radius: 2px;
+                            cursor: pointer;
+                        }
+                        button:first-child {
+                            background-color: #e29810;
+                            color: white;
+                        }
+                        button:last-child {
+                            background-color: #dd2424;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+
+        .btns-pn {
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+            margin: 20px 40px;
+            gap: 40px;
+            button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+            }
+
+            button:first-child {
+                background-color: #1cbe65;
+                color: white;
+            }
+            button:last-child {
+                background-color: #0c42a5;
+                color: white;
+            }
+        }
+    }
+}

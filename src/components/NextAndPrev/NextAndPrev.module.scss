@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+    margin: 20px 0px;
+
+    .prev-btn {
+        button {
+            border: none;
+            background: rgb(13, 67, 184);
+            color: white;
+            padding: 0.5rem 1.2rem;
+        }
+    }
+    .pagaNumber {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        button {
+            border: none;
+            background: rgb(23, 196, 219);
+            color: white;
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    .next-btn {
+        button {
+            border: none;
+            background: rgb(10, 180, 75);
+            color: white;
+            padding: 0.5rem 1.2rem;
+        }
+    }
+}

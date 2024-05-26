@@ -1,0 +1,294 @@
+.register-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("assets/images/login-bg.jpg") no-repeat center center fixed;
+    .register-form {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .register-form-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            height: 100vh;
+            background: radial-gradient(circle, #202047 0, #020917 100%);
+            img {
+                width: 60%;
+            }
+        }
+        .register-form-left {
+            width: 30%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+
+            .register-form-create {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                .form-left-header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .header-title {
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #292828;
+                    }
+                    .header-des {
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #292828;
+                    }
+                }
+                .login-form-body {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    .login-field-email,
+                    .login-field-username {
+                        position: relative;
+                        width: 100%;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 10px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 5px;
+
+                        input {
+                            border: none;
+                            outline: none;
+                            width: 100%;
+                            height: 100%;
+                            background: none;
+                            font-size: 14px;
+                        }
+                        label {
+                            z-index: -100;
+                            position: absolute;
+                            font-size: 14px;
+                            font-weight: 400;
+                            transition: 0.3s ease-in-out;
+                        }
+                        .has-content {
+                            z-index: 100;
+                            left: 10px;
+                            top: -12px;
+                            background: white;
+                            font-size: 12px;
+                        }
+                    }
+
+                    .login-field-password {
+                        position: relative;
+                        width: 100%;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 10px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 5px;
+                        input {
+                            border: none;
+                            outline: none;
+                            width: 100%;
+                            height: 100%;
+                            background: none;
+                            font-size: 14px;
+                        }
+                        label {
+                            z-index: -100;
+                            position: absolute;
+                            font-size: 14px;
+                            font-weight: 400;
+                            transition: 0.3s ease-in-out;
+                        }
+                        .has-content {
+                            z-index: 100;
+                            left: 10px;
+                            top: -12px;
+                            background: white;
+                            font-size: 12px;
+                        }
+                        .btn-showpass {
+                            border: none;
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                        }
+                        .btn-showpass:hover {
+                            background-color: #e0e0e0;
+                        }
+                    }
+                    .login-field-cardid-phonenumber {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                        .login-field-cardid {
+                            position: relative;
+                            width: 100%;
+                            height: 50px;
+                            display: flex;
+                            align-items: center;
+                            padding: 10px 10px;
+                            border: 1px solid #e0e0e0;
+                            border-radius: 5px;
+
+                            input {
+                                border: none;
+                                outline: none;
+                                width: 100%;
+                                height: 100%;
+                                background: none;
+                                font-size: 14px;
+                            }
+                            label {
+                                z-index: -100;
+                                position: absolute;
+                                font-size: 14px;
+                                font-weight: 400;
+                                transition: 0.3s ease-in-out;
+                            }
+                            .has-content {
+                                z-index: 100;
+                                left: 10px;
+                                top: -12px;
+                                background: white;
+                                font-size: 12px;
+                            }
+                        }
+                        .login-field-phonenumber {
+                            position: relative;
+                            width: 100%;
+                            height: 50px;
+                            display: flex;
+                            align-items: center;
+                            padding: 10px 10px;
+                            border: 1px solid #e0e0e0;
+                            border-radius: 5px;
+
+                            input {
+                                border: none;
+                                outline: none;
+                                width: 100%;
+                                height: 100%;
+                                background: none;
+                                font-size: 14px;
+                            }
+                            label {
+                                z-index: -100;
+                                position: absolute;
+                                font-size: 14px;
+                                font-weight: 400;
+                                transition: 0.3s ease-in-out;
+                            }
+                            .has-content {
+                                z-index: 100;
+                                left: 10px;
+                                top: -12px;
+                                background: white;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    .register-btn button {
+                        width: 100%;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: none;
+                        border-radius: 5px;
+                        background: #166bff;
+                        color: white;
+                        font-size: 16px;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+                }
+                .signup-with {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    font-size: 12px;
+                }
+                .signup-providers {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+                    div {
+                        width: 100%;
+                        height: min-content;
+                        padding: 10px 10px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 5px;
+                        background-color: #eff1f4 !important ;
+                        border-radius: 2px;
+                        transition: 0.3s ease-in-out;
+                        cursor: pointer;
+                    }
+                    div:first-child svg {
+                        color: #d4960e;
+                    }
+                    div:first-child span {
+                        color: #2a2b28;
+                        text-transform: uppercase;
+                    }
+                    div:last-child svg {
+                        color: #114bb6;
+                    }
+                    div:last-child span {
+                        color: #2a2b28;
+                        text-transform: uppercase;
+                    }
+                    div:hover {
+                        background-color: #e0e0e0 !important ;
+                    }
+                }
+            }
+        }
+        @media (max-width: 1024px) {
+            .register-form-right {
+                width: 60%;
+            }
+            .register-form-left {
+                width: 40%;
+            }
+        }
+        @media (max-width: 980px) {
+            display: flex;
+            flex-direction: column;
+            .register-form-right {
+                width: 100%;
+                height: 40vh;
+                img {
+                    height: 40vh;
+                }
+            }
+            .register-form-left {
+                width: 100%;
+            }
+        }
+    }
+}

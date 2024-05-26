@@ -1,0 +1,19 @@
+.logo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 20px;
+}
+.logo span {
+    width: min-content;
+    font-size: 20px;
+    font-family: 800;
+    color: rgb(20, 124, 165);
+    letter-spacing: 3px;
+}
+
+.logo svg {
+    color: rgb(20, 124, 165);
+}
