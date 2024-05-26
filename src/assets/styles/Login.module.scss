@@ -116,9 +116,7 @@
                     transition: 0.3s ease-in-out;
                 }
                 .has-content {
-                    z-index: 100;
-                    left: 10px;
-                    top: -12px;
+                    transform: translateY(-25px);
                     background: white;
                     font-size: 12px;
                 }

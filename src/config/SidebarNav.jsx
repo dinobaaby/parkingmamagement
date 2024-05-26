@@ -16,16 +16,16 @@ export const sidebarNavItems = [
         icon: <FaTicket />,
         submenu: [
             {
-                name: "Area",
-                link: "/tickets/area",
+                name: "Create",
+                link: "/tickets/create",
             },
             {
-                name: "Account",
-                link: "/tickets/account",
+                name: "Checkout",
+                link: "/tickets/Checkout",
             },
             {
-                name: "Role",
-                link: "/tickets/role",
+                name: "Checkin",
+                link: "/tickets/Checkin",
             },
         ],
     },

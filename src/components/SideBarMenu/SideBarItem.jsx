@@ -26,13 +26,15 @@ export default function SideBarItem({ item, onActive, isChoose }) {
                                 <span>{item.name}</span>
                             </div>
                             {item.submenu && item.submenu.length > 0 && (
-                                <span className="arrow">
-                                    {isOpen ? (
-                                        <IoIosArrowDown />
-                                    ) : (
-                                        <IoIosArrowForward />
-                                    )}
-                                </span>
+                                <Link to={item.link}>
+                                    <span className="arrow">
+                                        {isOpen ? (
+                                            <IoIosArrowDown />
+                                        ) : (
+                                            <IoIosArrowForward />
+                                        )}
+                                    </span>
+                                </Link>
                             )}
                         </span>
                     </li>
@@ -41,9 +43,11 @@ export default function SideBarItem({ item, onActive, isChoose }) {
                             <ul className="submenu">
                                 {item.submenu.map((subitem, index) => {
                                     return (
-                                        <li onClick={onActive} key={index}>
-                                            {subitem.name}
-                                        </li>
+                                        <Link to={subitem.link} key={index}>
+                                            <li onClick={onActive}>
+                                                {subitem.name}
+                                            </li>
+                                        </Link>
                                     );
                                 })}
                             </ul>
@@ -56,7 +60,7 @@ export default function SideBarItem({ item, onActive, isChoose }) {
                     className={`${isChoose ? "menu-item-active" : ""}`}
                     onClick={onActive}
                 >
-                    <Link style={{ textDecoration: "none" }}>
+                    <Link to={item.link} style={{ textDecoration: "none" }}>
                         {item.icon}
                         <span>{item.name}</span>
                     </Link>
