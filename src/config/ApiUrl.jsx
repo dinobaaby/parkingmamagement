@@ -10,4 +10,5 @@ export const TICKET_API = {
     GETBYTYPE: "http://localhost:5102/api/tickets/GetByType",
     GETBYSTATUS: "http://localhost:5102/api/tickets/GetByStatus",
     SEARCH: "http://localhost:5102/api/tickets/GetsByPlatenumber",
+    CHECKIN: "http://localhost:5102/api/tickets/CheckIn",
 };

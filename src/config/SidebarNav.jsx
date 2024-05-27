@@ -20,6 +20,10 @@ export const sidebarNavItems = [
                 link: "/tickets/create",
             },
             {
+                name: "List",
+                link: "/tickets",
+            },
+            {
                 name: "Checkout",
                 link: "/tickets/Checkout",
             },

@@ -2,33 +2,56 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "../../assets/styles/Ticket.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getTickets } from "../../features/ticket/ticketAction";
+import { deleteTicket, getTickets } from "../../features/ticket/ticketAction";
 import { FiAlertTriangle } from "react-icons/fi";
 import { IoTicket } from "react-icons/io5";
 import NextAndPrev from "../NextAndPrev/NextAndPrev";
 import NextAndPrevButton from "../NextAndPrev/NextAndPrevButton";
+
 const cx = classNames.bind(styles);
+
 export default function TicketTable() {
-    const [currentPage, setCurrentPage] = useState(5);
+    const [currentPage, setCurrentPage] = useState(1); // Initial page set to 1
     const dispatch = useDispatch();
     const ticketData = useSelector((state) => state.ticket.data);
+    const isDelete = useSelector((state) => state.ticket.deleting);
 
-    useEffect(() => {
-        dispatch(getTickets(currentPage, 10));
-    }, []);
     const handleNext = () => {
-        setCurrentPage(currentPage + 1);
-        dispatch(getTickets(currentPage, 10));
+        if (currentPage < Math.ceil(ticketData?.totalPages || 1)) {
+            // Check for valid page
+            setCurrentPage(currentPage + 1);
+            dispatch(getTickets(currentPage, 10));
+        }
     };
+
     const handlePrev = () => {
-        if (currentPage === 1) return;
-        setCurrentPage(currentPage - 1);
-        dispatch(getTickets(currentPage, 10));
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+            dispatch(getTickets(currentPage, 10));
+        }
     };
+
     const handleChoose = (pageIndex) => {
         setCurrentPage(pageIndex);
         dispatch(getTickets(pageIndex, 10));
     };
+
+    const handleDeleteTicket = (ticketId) => {
+        if (
+            window.confirm(
+                `Are you sure you want to delete ticket with ID ${ticketId}?`
+            )
+        ) {
+            dispatch(deleteTicket({ id: ticketId }));
+            console.log(`Ticket with ID ${ticketId} deleted.`);
+        }
+    };
+
+    const handleEditTicket = (ticketId) => {};
+
+    useEffect(() => {
+        dispatch(getTickets(currentPage, 10));
+    }, [currentPage, dispatch]);
 
     return (
         <div className={cx("table-container")}>
@@ -59,8 +82,7 @@ export default function TicketTable() {
                                     <td>
                                         {ticket.ticketTypeId === 1 ? (
                                             <>
-                                                Daily {"  "}
-                                                <IoTicket color="green" />
+                                                Daily <IoTicket color="green" />
                                             </>
                                         ) : (
                                             <IoTicket color="blue" />
@@ -68,10 +90,20 @@ export default function TicketTable() {
                                     </td>
                                     <td>{ticket.ticketStatus}</td>
                                     <td>
-                                        <button className={cx("btn-edit")}>
+                                        <button
+                                            onClick={handleEditTicket}
+                                            className={cx("btn-edit")}
+                                        >
                                             Edit
                                         </button>
-                                        <button className={cx("btn-delete")}>
+                                        <button
+                                            onClick={() =>
+                                                handleDeleteTicket(
+                                                    ticket.ticketId
+                                                )
+                                            }
+                                            className={cx("btn-delete")}
+                                        >
                                             Delete
                                         </button>
                                     </td>

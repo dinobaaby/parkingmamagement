@@ -1,0 +1,113 @@
+.area-page {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 10px;
+    min-height: 80vh;
+    .notice-board {
+        width: 60px;
+        min-height: 80vh;
+        height: 100%;
+        border: 1px solid #cecece;
+    }
+    .area-map {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        width: 80%;
+        min-height: 80vh;
+        border: 1px solid #cecece;
+        .first-line {
+            width: 100%;
+            height: 100px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            div:first-child {
+                border: 1px solid #cecece;
+            }
+            div:last-child {
+                height: 70%;
+                border: 1px solid #cecece;
+            }
+        }
+
+        .second-line {
+            height: 75%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr 1fr;
+            gap: 50px;
+
+            .col-1 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+
+                div:nth-child(1) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    gap: 50px;
+                    div:nth-child(1) {
+                        height: 20%;
+                        border: 1px solid #cecece;
+                    }
+                    div:nth-child(2) {
+                        height: 70%;
+                        border: 1px solid #cecece;
+                    }
+                }
+                div:nth-child(2) {
+                    border: 1px solid #cecece;
+                }
+            }
+            .col-2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                gap: 50px;
+                div:nth-child(1),
+                div:nth-child(3) {
+                    height: 10%;
+                    border: 1px solid #cecece;
+                }
+                div:nth-child(2) {
+                    height: 80%;
+                    border: 1px solid #cecece;
+                }
+            }
+            .col-3 {
+                border: 1px solid #cecece;
+            }
+            .col-4 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 50px;
+                div {
+                    width: 100%;
+                    height: 30%;
+                    border: 1px solid #cecece;
+                    color: #cecece;
+                }
+            }
+        }
+    }
+
+    .area-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 10%;
+        .area-info-data {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+}

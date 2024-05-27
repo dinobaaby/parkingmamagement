@@ -36,8 +36,8 @@ export const authLogin = ({ email, password }) => {
             const data = res.data.result || {};
             if (data.token) {
                 dispatch(authLoginSuccess(data));
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("userData", JSON.stringify(data.userDate));
+                localStorage.setItem("token", JSON.stringify(data.token));
+                localStorage.setItem("userData", JSON.stringify(data.userData));
             } else {
                 dispatch(authLoginFailure("Invalid login response"));
             }
@@ -50,5 +50,6 @@ export const authLogin = ({ email, password }) => {
 
 export const authLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userData");
     return { type: AUTH_LOGOUT };
 };

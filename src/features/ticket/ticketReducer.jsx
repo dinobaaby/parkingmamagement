@@ -11,6 +11,9 @@ import {
     DELETE_TICKET_SUCCESS,
     DELETE_TICKET_REQUEST,
     DELETE_TICKET_FAILURE,
+    CHECKIN_TICKET_REQUEST,
+    CHECKIN_TICKET_SUCCESS,
+    CHECKIN_TICKET_FAILURE,
 } from "./ticketType";
 
 const INITIAL_STATE = {
@@ -19,8 +22,11 @@ const INITIAL_STATE = {
         isSuccess: false,
         message: "",
     },
+    ticketData: {},
+
     loading: false,
     error: false,
+    deleting: false,
 };
 
 const ticketReducer = (state = INITIAL_STATE, action) => {
@@ -48,7 +54,50 @@ const ticketReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 error: true,
             };
-
+        case CHECKIN_TICKET_REQUEST:
+            console.log("CHECKIN_TICKET_REQUEST");
+            return {
+                ...state,
+                loading: true,
+                error: false,
+            };
+        case CHECKIN_TICKET_SUCCESS:
+            console.log("CHECKIN_TICKET_SUCCESS");
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                ticketData: action.payload,
+            };
+        case CHECKIN_TICKET_FAILURE:
+            console.log("CHECKIN_TICKET_FAILURE");
+            return {
+                ...state,
+                ticketData: action.payload,
+                loading: false,
+                error: true,
+            };
+        case DELETE_TICKET_REQUEST:
+            console.log("DELETE_TICKET_REQUEST");
+            return {
+                ...state,
+                deleting: true,
+                error: false,
+            };
+        case DELETE_TICKET_SUCCESS:
+            console.log("DELETE_TICKET_SUCCESS");
+            return {
+                ...state,
+                deleting: true,
+                error: false,
+            };
+        case DELETE_TICKET_FAILURE:
+            console.log("DELETE_TICKET_FAILURE");
+            return {
+                ...state,
+                deleting: false,
+                error: true,
+            };
         default:
             return state;
     }
