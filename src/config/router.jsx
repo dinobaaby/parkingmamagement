@@ -10,5 +10,13 @@ const routesConfig = {
     role: "/role",
     slot: "/slot",
     notfound: "*",
+
+    payment: "/payment",
+    customer: "/customer",
+    bill: "/bill",
+    account: "/account",
+    cash: "/payment/cash",
+    credit: "/payment/credit",
+    banktransfer: "/payment/banktransfer",
 };
 export default routesConfig;

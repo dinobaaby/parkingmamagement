@@ -5,6 +5,9 @@ import upload_image from "../assets/svgs/upload_area.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { checkInTicket } from "../features/ticket/ticketAction";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
+import { Bounce, toast } from "react-toastify";
+
 const cx = classNames.bind(styles);
 export default function CheckInTicket() {
     const [plateNumber, setPlateNumber] = useState("");
@@ -13,12 +16,31 @@ export default function CheckInTicket() {
     const dispatch = useDispatch();
     const nagivate = useNavigate();
     const ticket = useSelector((state) => state.ticket.ticketData);
+    const loading = useSelector((state) => state.ticket.loading);
+    const isSuccess = useSelector((state) => state.ticket.success);
     const handleCheckIn = () => {
         const formData = new FormData();
         formData.append("file", plateNumberImage);
         dispatch(checkInTicket({ plateNumber, formdata: formData }));
     };
-    useEffect(() => {}, [ticket, nagivate]);
+    useEffect(() => {
+        if (isSuccess) {
+            toast("Check in ticket success full", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+
+            setPlateNumber("");
+            setPlateNumberImage(false);
+        }
+    }, [ticket, nagivate, isSuccess]);
 
     return (
         <div className={cx("checkin-page")}>
@@ -36,12 +58,13 @@ export default function CheckInTicket() {
                                         : ""
                                 }`
                             )}
-                            htmlFor="email"
+                            htmlFor="plate-number"
                         >
                             Plate number
                         </label>
                         <input
-                            name="email"
+                            id="plate-number"
+                            name="plate-number"
                             onFocus={() => setOnPlatefocus(true)}
                             onBlur={() => setOnPlatefocus(false)}
                             value={plateNumber}
@@ -79,7 +102,9 @@ export default function CheckInTicket() {
                     </div>
                 </div>
                 <div className={cx("footer")}>
-                    <button onClick={handleCheckIn}>Check In</button>
+                    <button onClick={handleCheckIn}>
+                        {loading ? <Loader /> : "Check in"}
+                    </button>
                 </div>
             </div>
         </div>

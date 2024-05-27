@@ -15,6 +15,15 @@ import {
     CHECKIN_TICKET_REQUEST,
     CHECKIN_TICKET_SUCCESS,
     CHECKIN_TICKET_FAILURE,
+    CHECKOUT_TICKET_REQUEST,
+    CHECKOUT_TICKET_SUCCESS,
+    CHECKOUT_TICKET_FAILURE,
+    GET_TICKET_BY_PLATE_NUMBER_REQUEST,
+    GET_TICKET_BY_PLATE_NUMBER_SUCCESS,
+    GET_TICKET_BY_PLATE_NUMBER_FAILURE,
+    GET_TICKET_BY_ID_REQUEST,
+    GET_TICKET_BY_ID_SUCCESS,
+    GET_TICKET_BY_ID_FAILURE,
 } from "./ticketType";
 
 import axios from "axios";
@@ -136,6 +145,121 @@ export const deleteTicket = ({ id }) => {
             }
         } catch (error) {
             dispatch(deleteTicketFailure(error));
+        }
+    };
+};
+
+export const checkOutTicketRequest = () => {
+    return {
+        type: CHECKOUT_TICKET_REQUEST,
+    };
+};
+
+export const checkOutTicketSuccess = (data) => {
+    return {
+        type: CHECKOUT_TICKET_SUCCESS,
+        payload: data,
+    };
+};
+
+export const checkOutTicketFailure = (error) => {
+    return {
+        type: CHECKOUT_TICKET_FAILURE,
+        payload: error,
+    };
+};
+
+export const checkOutTicket = ({ id, plNumber, img }) => {
+    return async (dispatch, getState) => {
+        dispatch(checkOutTicketRequest());
+        try {
+            const res = await axios.patch(`${TICKET_API.CHECKOUT}${id}`, {
+                plateNumber: plNumber,
+                imageUrl: img,
+            });
+            console.log(res);
+            if (res.data.isSuccess) {
+                dispatch(checkOutTicketSuccess(res.data));
+                dispatch(getTickets(1, 10));
+            } else {
+                dispatch(checkOutTicketFailure(res.data));
+            }
+        } catch (error) {
+            dispatch(checkOutTicketFailure(error.response.data.error));
+        }
+    };
+};
+
+export const getTicketByPlateNumberRequest = () => {
+    return {
+        type: GET_TICKET_BY_PLATE_NUMBER_REQUEST,
+    };
+};
+
+export const getTicketByPlateNumberSuccess = (data) => {
+    return {
+        type: GET_TICKET_BY_PLATE_NUMBER_SUCCESS,
+        payload: data,
+    };
+};
+export const getTicketByPlateNumberFailure = (error) => {
+    return {
+        type: GET_TICKET_BY_PLATE_NUMBER_FAILURE,
+        payload: error,
+    };
+};
+
+export const getTicketByPlateNumber = ({ plateNumber }) => {
+    return async (dispatch, getState) => {
+        dispatch(getTicketByPlateNumberRequest());
+        try {
+            const res = await axios.get(
+                `${TICKET_API.GETPLATEBYPLATE}${plateNumber}`
+            );
+            console.log(res);
+            if (res.data.isSuccess) {
+                dispatch(getTicketByPlateNumberSuccess(res.data));
+            } else {
+                dispatch(getTicketByPlateNumberFailure(res.data));
+            }
+        } catch (error) {
+            dispatch(getTicketByPlateNumberFailure(error));
+        }
+    };
+};
+
+export const getTicketByIdRequest = () => {
+    return {
+        type: GET_TICKET_BY_ID_REQUEST,
+    };
+};
+export const getTicketByIdSuccess = (data) => {
+    return {
+        type: GET_TICKET_BY_ID_SUCCESS,
+        payload: data,
+    };
+};
+
+export const getTicketByIdFailure = (error) => {
+    return {
+        type: GET_TICKET_BY_ID_FAILURE,
+        payload: error,
+    };
+};
+
+export const getTicketById = ({ id }) => {
+    return async (dispatch, getState) => {
+        dispatch(getTicketByIdRequest());
+        try {
+            const res = await axios.get(`${TICKET_API.GETBYID}${id}`);
+            console.log(res);
+            if (res.data.isSuccess) {
+                dispatch(getTicketByIdSuccess(res.data));
+            } else {
+                dispatch(getTicketByIdFailure(res.data));
+            }
+        } catch (error) {
+            dispatch(getTicketByIdFailure(error));
         }
     };
 };

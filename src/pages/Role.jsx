@@ -1,5 +1,6 @@
 import React from "react";
 import { Bounce, toast } from "react-toastify";
+import Loader from "../components/Loader/Loader";
 // import "react-toastify/dist/ReactToastify.css";
 
 export default function Role() {
@@ -19,6 +20,7 @@ export default function Role() {
     return (
         <div>
             <h1>Role</h1>
+
             <button onClick={notify}>Notify!</button>
         </div>
     );

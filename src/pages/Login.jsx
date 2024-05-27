@@ -6,6 +6,7 @@ import { FaFacebook, FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogin } from "../features/auth/authAction";
+import Loader from "../components/Loader/Loader";
 
 const cx = classNames.bind(styles);
 
@@ -83,6 +84,7 @@ export default function Login() {
                             Email address
                         </label>
                         <input
+                            id="email"
                             name="email"
                             onFocus={() => setOnEmailFocus(true)}
                             onBlur={() => setOnEmailFocus(false)}
@@ -105,6 +107,7 @@ export default function Login() {
                             Password
                         </label>
                         <input
+                            id="password"
                             name="password"
                             value={password}
                             onFocus={() => setOnPasswordFocus(true)}
@@ -124,7 +127,7 @@ export default function Login() {
                     </div>
                     <div className={cx("login-btn")}>
                         <button onClick={handleLogin}>
-                            {isLoading ? "Loading" : "Login"}
+                            {isLoading ? <Loader /> : "Login"}
                         </button>
                     </div>
                 </div>

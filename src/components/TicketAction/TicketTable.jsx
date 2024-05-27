@@ -7,7 +7,7 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { IoTicket } from "react-icons/io5";
 import NextAndPrev from "../NextAndPrev/NextAndPrev";
 import NextAndPrevButton from "../NextAndPrev/NextAndPrevButton";
-
+import { toast, Bounce } from "react-toastify";
 const cx = classNames.bind(styles);
 
 export default function TicketTable() {
@@ -17,11 +17,7 @@ export default function TicketTable() {
     const isDelete = useSelector((state) => state.ticket.deleting);
 
     const handleNext = () => {
-        if (currentPage < Math.ceil(ticketData?.totalPages || 1)) {
-            // Check for valid page
-            setCurrentPage(currentPage + 1);
-            dispatch(getTickets(currentPage, 10));
-        }
+        setCurrentPage(currentPage + 1);
     };
 
     const handlePrev = () => {
@@ -44,6 +40,17 @@ export default function TicketTable() {
         ) {
             dispatch(deleteTicket({ id: ticketId }));
             console.log(`Ticket with ID ${ticketId} deleted.`);
+            toast.success("Delete ticket success", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
     };
 
@@ -51,7 +58,7 @@ export default function TicketTable() {
 
     useEffect(() => {
         dispatch(getTickets(currentPage, 10));
-    }, [currentPage, dispatch]);
+    }, [dispatch, currentPage]);
 
     return (
         <div className={cx("table-container")}>
