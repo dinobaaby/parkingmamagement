@@ -21,7 +21,7 @@ export default function Login() {
     const isAuth = useSelector((state) => state.auth.isAuth);
     const isError = useSelector((state) => state.auth.isError);
     const userData = useSelector((state) => state.auth.user);
-
+    const isLoading = useSelector((state) => state.auth.isLoading);
     const handleLogin = () => {
         dispatch(authLogin({ email, password }));
     };
@@ -123,7 +123,9 @@ export default function Login() {
                         <a>Forgot password?</a>
                     </div>
                     <div className={cx("login-btn")}>
-                        <button onClick={handleLogin}>Login</button>
+                        <button onClick={handleLogin}>
+                            {isLoading ? "Loading" : "Login"}
+                        </button>
                     </div>
                 </div>
             </div>

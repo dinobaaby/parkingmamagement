@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SideBar from "./SideBar";
 import Header from "./Header";
 import "./DashboardLayout.css";
+import "react-toastify/dist/ReactToastify.css";
 import { Bounce, ToastContainer } from "react-toastify";
 export default function DashboardLayout({ children }) {
     const [openSidebar, setOpenSidebar] = useState(true);
