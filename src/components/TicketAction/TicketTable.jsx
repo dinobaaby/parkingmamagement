@@ -1,24 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "../../assets/styles/Ticket.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTicket, getTickets } from "../../features/ticket/ticketAction";
+import {
+    deleteTicket,
+    getTicketById,
+    getTickets,
+    updateTicket,
+} from "../../features/ticket/ticketAction";
 import { FiAlertTriangle } from "react-icons/fi";
 import { IoTicket } from "react-icons/io5";
 import NextAndPrev from "../NextAndPrev/NextAndPrev";
 import NextAndPrevButton from "../NextAndPrev/NextAndPrevButton";
 import { toast, Bounce } from "react-toastify";
+import EditTicket from "./EditTicket";
+
 const cx = classNames.bind(styles);
 
 export default function TicketTable() {
-    const [currentPage, setCurrentPage] = useState(1); // Initial page set to 1
+    const [currentPage, setCurrentPage] = useState(1);
+
     const dispatch = useDispatch();
     const ticketData = useSelector((state) => state.ticket.data);
     const isDelete = useSelector((state) => state.ticket.deleting);
-
     const handleNext = () => {
         setCurrentPage(currentPage + 1);
     };
+    const [onOpenEdit, setOnOpenEdit] = useState(false);
+    const [ticket, setTicket] = useState({});
 
     const handlePrev = () => {
         if (currentPage > 1) {
@@ -30,6 +39,10 @@ export default function TicketTable() {
     const handleChoose = (pageIndex) => {
         setCurrentPage(pageIndex);
         dispatch(getTickets(pageIndex, 10));
+    };
+    const handleEditTicket = ({ data }) => {
+        setOnOpenEdit((prev) => !prev);
+        setTicket(data);
     };
 
     const handleDeleteTicket = (ticketId) => {
@@ -54,14 +67,13 @@ export default function TicketTable() {
         }
     };
 
-    const handleEditTicket = (ticketId) => {};
-
     useEffect(() => {
         dispatch(getTickets(currentPage, 10));
-    }, [dispatch, currentPage]);
+    }, [currentPage, dispatch]);
 
     return (
         <div className={cx("table-container")}>
+            {onOpenEdit && <EditTicket data={ticket} />}
             <table className={cx("table-ticket")}>
                 <thead>
                     <tr>
@@ -98,7 +110,11 @@ export default function TicketTable() {
                                     <td>{ticket.ticketStatus}</td>
                                     <td>
                                         <button
-                                            onClick={handleEditTicket}
+                                            onClick={() =>
+                                                handleEditTicket({
+                                                    data: ticket,
+                                                })
+                                            }
                                             className={cx("btn-edit")}
                                         >
                                             Edit

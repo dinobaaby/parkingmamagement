@@ -90,6 +90,33 @@ const ticketReducer = (state = INITIAL_STATE, action) => {
                 error: true,
                 success: false,
             };
+        case UPDATE_TICKET_REQUEST:
+            console.log("UPDATE_TICKET_REQUEST");
+            return {
+                ...state,
+                loading: true,
+                error: false,
+                success: false,
+            };
+        case UPDATE_TICKET_SUCCESS:
+            console.log("UPDATE_TICKET_SUCCESS");
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                success: true,
+                ticketData: action.payload,
+            };
+        case UPDATE_TICKET_FAILURE:
+            console.log("UPDATE_TICKET_FAILURE");
+            return {
+                ...state,
+                ticketData: action.payload,
+                loading: false,
+                error: true,
+                success: false,
+            };
+
         case DELETE_TICKET_REQUEST:
             console.log("DELETE_TICKET_REQUEST");
             return {

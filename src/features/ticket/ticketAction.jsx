@@ -263,3 +263,40 @@ export const getTicketById = ({ id }) => {
         }
     };
 };
+
+export const updateTicketRequest = () => {
+    return {
+        type: UPDATE_TICKET_REQUEST,
+    };
+};
+
+export const updateTicketSuccess = (data) => {
+    return {
+        type: UPDATE_TICKET_SUCCESS,
+        payload: data,
+    };
+};
+
+export const updateTicketFailure = (error) => {
+    return {
+        type: UPDATE_TICKET_FAILURE,
+        payload: error,
+    };
+};
+
+export const updateTicket = ({ ticket }) => {
+    return async (dispatch, getState) => {
+        dispatch(updateTicketRequest());
+        try {
+            const res = await axios.patch(TICKET_API.UPDATE, ticket);
+            if (res.data.isSuccess) {
+                dispatch(updateTicketSuccess(res.data));
+                dispatch(getTickets(1, 10));
+            } else {
+                dispatch(updateTicketFailure(res.data));
+            }
+        } catch (error) {
+            dispatch(updateTicketFailure(error));
+        }
+    };
+};

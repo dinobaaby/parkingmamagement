@@ -6,6 +6,7 @@ const routesConfig = {
     ticketCheckout: "/tickets/checkout",
     ticketCheckin: "/tickets/checkin",
     ticketCreate: "/tickets/create",
+    ticketUpdate: "/tickets/update",
     area: "/area",
     role: "/role",
     slot: "/slot",

@@ -6,9 +6,11 @@ import {
     getTicketByPlateNumber,
     getTickets,
 } from "../../features/ticket/ticketAction";
+import { useNavigate } from "react-router-dom";
 const cx = classNames.bind(styles);
 export default function TicketAction() {
     const dispatch = useDispatch();
+    const nagivate = useNavigate();
     const [plateNumber, setPlateNumber] = useState("");
 
     const handleCreateTicket = (e) => {
@@ -39,7 +41,12 @@ export default function TicketAction() {
                     <option value={2}>Used</option>
                 </select>
             </div>
-            <button className={cx("btn-create")}>+ Create</button>
+            <button
+                onClick={() => nagivate("/tickets/create")}
+                className={cx("btn-create")}
+            >
+                + Create
+            </button>
         </div>
     );
 }

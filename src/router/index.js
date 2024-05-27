@@ -14,6 +14,7 @@ import PayMent from "../pages/PayMent";
 import Bill from "../pages/Bill";
 import Customer from "../pages/Customer";
 import Account from "../pages/Account";
+import EditTicket from "../components/TicketAction/EditTicket";
 const publicRoutes = [
     { path: routesConfig.login, component: Login, layout: null },
     { path: routesConfig.register, component: Register, layout: null },
@@ -36,5 +37,6 @@ const privateRoutes = [
     { path: routesConfig.bill, component: Bill },
     { path: routesConfig.customer, component: Customer },
     { path: routesConfig.account, component: Account },
+    { path: routesConfig.ticketUpdate, component: EditTicket },
 ];
 export { publicRoutes, privateRoutes };
