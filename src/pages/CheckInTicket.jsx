@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "../assets/styles/CheckInTicket.module.scss";
 import upload_image from "../assets/svgs/upload_area.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { checkInTicket } from "../features/ticket/ticketAction";
+import { useNavigate } from "react-router-dom";
 const cx = classNames.bind(styles);
 export default function CheckInTicket() {
     const [plateNumber, setPlateNumber] = useState("");
     const [plateNumberImage, setPlateNumberImage] = useState(false);
     const [onPlatefocus, setOnPlatefocus] = useState(false);
+    const dispatch = useDispatch();
+    const nagivate = useNavigate();
+    const ticket = useSelector((state) => state.ticket.ticketData);
+    const handleCheckIn = () => {
+        const formData = new FormData();
+        formData.append("file", plateNumberImage);
+        dispatch(checkInTicket({ plateNumber, formdata: formData }));
+    };
+    useEffect(() => {}, [ticket, nagivate]);
 
     return (
         <div className={cx("checkin-page")}>
@@ -67,7 +79,7 @@ export default function CheckInTicket() {
                     </div>
                 </div>
                 <div className={cx("footer")}>
-                    <button>Check In</button>
+                    <button onClick={handleCheckIn}>Check In</button>
                 </div>
             </div>
         </div>

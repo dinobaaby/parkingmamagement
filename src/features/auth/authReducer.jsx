@@ -5,6 +5,7 @@ import {
     AUTH_SIGNUP_REQUEST,
     AUTH_SIGNUP_SUCCESS,
     AUTH_SIGNUP_FAILURE,
+    AUTH_LOGOUT,
 } from "./authType";
 
 const INITIAL_STATE = {
@@ -39,6 +40,12 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 user: action.payload,
                 isLoading: false,
                 isError: true,
+                isAuth: false,
+            };
+        case AUTH_LOGOUT:
+            return {
+                ...state,
+                user: {},
                 isAuth: false,
             };
         default:

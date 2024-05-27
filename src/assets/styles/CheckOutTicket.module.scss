@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 20px 50px;
+    padding: 20px 200px;
     justify-content: center;
     gap: 30px;
     .checkout-container {
@@ -17,7 +17,6 @@
                 text-align: center;
             }
         }
-
         .body {
             display: flex;
             flex-direction: row;
@@ -27,9 +26,127 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                .ticket-data-header {
+                    h2 {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
             }
             .ticket-check {
                 width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .ticket-check-header {
+                    h2 {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+
+                .form-image {
+                    width: 100%;
+                    min-height: 200px;
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 10px;
+                    border: 1px solid #e0e0e0;
+                    border-radius: 5px;
+                    background: url("") no-repeat center center;
+
+                    label {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        .tiket-image {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+                .footer {
+                    display: flex;
+                    flex-direction: row;
+
+                    gap: 20px;
+                    .checkout-btn {
+                        width: 100%;
+                        height: 40px;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        color: white;
+                        background-color: #0080ff;
+                        transition: all 0.3s ease-in-out;
+
+                        cursor: pointer;
+                        &:hover {
+                            background-color: white;
+                            color: black;
+                            border: 1px solid #0080ff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 1890px) {
+        padding: 20px 100px;
+        .checkout-container {
+            .body {
+                flex-direction: row;
+                padding: 0 50px;
+                .ticket-data {
+                    width: 100%;
+                }
+                .ticket-check {
+                    width: 100%;
+                    .footer {
+                        width: 100%;
+
+                        flex-direction: column;
+                        gap: 20px;
+                        button {
+                            width: 100%;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 20px 20px;
+        .checkout-container {
+            .body {
+                flex-direction: column;
+                padding: 0 50px;
+                .ticket-data {
+                    width: 100%;
+                }
+                .ticket-check {
+                    width: 100%;
+                    .footer {
+                        width: 100%;
+
+                        flex-direction: column;
+                        gap: 20px;
+                        button {
+                            width: 100%;
+                            font-size: 14px;
+                        }
+                    }
+                }
             }
         }
     }

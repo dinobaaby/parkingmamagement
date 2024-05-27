@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SideBar from "./SideBar";
 import Header from "./Header";
 import "./DashboardLayout.css";
+import { Bounce, ToastContainer } from "react-toastify";
 export default function DashboardLayout({ children }) {
     const [openSidebar, setOpenSidebar] = useState(true);
     const handleToggleSidebar = () => {
@@ -15,6 +16,19 @@ export default function DashboardLayout({ children }) {
                 <Header onOpenSidebar={handleToggleSidebar} />
                 <div>{children}</div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
         </div>
     );
 }

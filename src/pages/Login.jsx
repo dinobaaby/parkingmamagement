@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../assets/styles/Login.module.scss";
 import classNames from "classnames/bind";
 import { BsGoogle, BsTwitter } from "react-icons/bs";
 import { FaFacebook, FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogin } from "../features/auth/authAction";
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +16,22 @@ export default function Login() {
     const [onPasswordFocus, setOnPasswordFocus] = useState(false);
     const [onShowPassword, setOnShowPassword] = useState(false);
     const nagiavate = useNavigate();
+
+    const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.auth.isAuth);
+    const isError = useSelector((state) => state.auth.isError);
+    const userData = useSelector((state) => state.auth.user);
+
+    const handleLogin = () => {
+        dispatch(authLogin({ email, password }));
+    };
+    useEffect(() => {
+        if (isAuth) {
+            nagiavate("/");
+        } else if (isError) {
+            alert("Login failed");
+        }
+    }, [isAuth, userData.token, nagiavate, isError]);
 
     const handleNagivateToSignup = () => {
         nagiavate("/register");
@@ -105,7 +123,7 @@ export default function Login() {
                         <a>Forgot password?</a>
                     </div>
                     <div className={cx("login-btn")}>
-                        <button>Login</button>
+                        <button onClick={handleLogin}>Login</button>
                     </div>
                 </div>
             </div>
