@@ -6,9 +6,18 @@ const routesConfig = {
     ticketCheckout: "/tickets/checkout",
     ticketCheckin: "/tickets/checkin",
     ticketCreate: "/tickets/create",
+    ticketUpdate: "/tickets/update",
     area: "/area",
     role: "/role",
     slot: "/slot",
     notfound: "*",
+
+    payment: "/payment",
+    customer: "/customer",
+    bill: "/bill",
+    account: "/account",
+    cash: "/payment/cash",
+    credit: "/payment/credit",
+    banktransfer: "/payment/banktransfer",
 };
 export default routesConfig;

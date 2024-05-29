@@ -44,7 +44,7 @@
         }
         .btn-create {
             width: 20%;
-            padding: 10px 20px;
+            padding: 8px;
             background-color: #1cbe65;
             border: 1px solid #1cbe65;
             font-size: 16px;
@@ -55,6 +55,9 @@
     }
 
     .table-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
         // overflow-x: auto;
         .table-ticket {
             table-layout: fixed;

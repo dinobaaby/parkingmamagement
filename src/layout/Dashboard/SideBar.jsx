@@ -11,8 +11,8 @@ export default function SideBar() {
                 <SideBarMenu />
             </nav>
             <div className="sidebar-footer">
-                <CiSettings size={20} color="white" />
-                <span style={{ color: "white" }}>Settings</span>
+                <CiSettings size={20} color="rgb(146, 146, 146)" />
+                <span>Settings</span>
             </div>
         </div>
     );

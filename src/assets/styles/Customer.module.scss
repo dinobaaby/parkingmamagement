@@ -1,0 +1,101 @@
+.customer-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    gap: 20px;
+    .customer-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 20px;
+        .btn-search {
+            border: none;
+            outline: none;
+            background: rgb(19, 13, 73);
+            color: white;
+            font-weight: 500;
+        }
+    }
+    .customer-search {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .customer-table {
+        border-collapse: collapse;
+        thead {
+            background: rgb(19, 13, 73);
+            color: white;
+            th {
+                border: 1px solid #ccc;
+                text-align: center;
+                padding: 10px;
+                font-weight: 500;
+            }
+        }
+        tbody {
+            td {
+                border: 1px solid #ccc;
+                text-align: center;
+                padding: 10px;
+            }
+        }
+
+        tfoot {
+            td {
+                text-align: center;
+                padding: 10px;
+            }
+
+            td:last-child {
+                width: 100%;
+                display: flex;
+                gap: 10px;
+                flex-direction: row;
+                justify-content: end;
+                .next,
+                .prev {
+                    border: none;
+                    outline: none;
+                    color: white;
+                    font-weight: 500;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                }
+
+                .next {
+                    background: rgb(28, 113, 211);
+                    &:hover {
+                        background: rgb(10, 58, 163, 0.8);
+                    }
+                }
+
+                .prev {
+                    background: rgb(19, 13, 73);
+                    &:hover {
+                        background: rgb(19, 13, 73, 0.8);
+                    }
+                }
+                .pageIndex {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    span {
+                        font-weight: 500;
+                        width: 67px;
+                        height: 35px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: white;
+                        cursor: pointer;
+                        background-color: rgb(25, 84, 192);
+                    }
+                    .active {
+                        background-color: rgb(180, 34, 161);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,25 +1,26 @@
-import React from "react";
-import { Bounce, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from "react";
+import classNames from "classnames/bind";
+import styles from "../assets/styles/Role.module.scss";
+import InputField from "../components/InputField/InputField";
+import { Button } from "@mui/material";
+const cx = classNames.bind(styles);
 
 export default function Role() {
-    const notify = () =>
-        toast("🦄 Wow so easy!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce, // Corrected the transition property
-        });
-
+    const [roleName, setRoleName] = useState("");
+    const handleChangeRoleName = (value) => {
+        setRoleName(value);
+    };
     return (
-        <div>
-            <h1>Role</h1>
-            <button onClick={notify}>Notify!</button>
+        <div className={cx("role-page")}>
+            <div className={cx("create-role")}>
+                <InputField
+                    label={"Role name"}
+                    onChangeValue={handleChangeRoleName}
+                    value={roleName}
+                />
+                <button className={cx("btn-create")}>Create</button>
+            </div>
+            <div></div>
         </div>
     );
 }

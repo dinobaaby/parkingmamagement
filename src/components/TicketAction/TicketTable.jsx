@@ -1,28 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "../../assets/styles/Ticket.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTicket, getTickets } from "../../features/ticket/ticketAction";
+import {
+    deleteTicket,
+    getTicketById,
+    getTickets,
+    updateTicket,
+} from "../../features/ticket/ticketAction";
 import { FiAlertTriangle } from "react-icons/fi";
 import { IoTicket } from "react-icons/io5";
 import NextAndPrev from "../NextAndPrev/NextAndPrev";
 import NextAndPrevButton from "../NextAndPrev/NextAndPrevButton";
+import { toast, Bounce } from "react-toastify";
+import EditTicket from "./EditTicket";
 
 const cx = classNames.bind(styles);
 
 export default function TicketTable() {
-    const [currentPage, setCurrentPage] = useState(1); // Initial page set to 1
+    const [currentPage, setCurrentPage] = useState(1);
+
     const dispatch = useDispatch();
     const ticketData = useSelector((state) => state.ticket.data);
     const isDelete = useSelector((state) => state.ticket.deleting);
-
     const handleNext = () => {
-        if (currentPage < Math.ceil(ticketData?.totalPages || 1)) {
-            // Check for valid page
-            setCurrentPage(currentPage + 1);
-            dispatch(getTickets(currentPage, 10));
-        }
+        setCurrentPage(currentPage + 1);
     };
+    const [onOpenEdit, setOnOpenEdit] = useState(false);
+    const [ticket, setTicket] = useState({});
 
     const handlePrev = () => {
         if (currentPage > 1) {
@@ -35,6 +40,10 @@ export default function TicketTable() {
         setCurrentPage(pageIndex);
         dispatch(getTickets(pageIndex, 10));
     };
+    const handleEditTicket = ({ data }) => {
+        setOnOpenEdit((prev) => !prev);
+        setTicket(data);
+    };
 
     const handleDeleteTicket = (ticketId) => {
         if (
@@ -44,10 +53,19 @@ export default function TicketTable() {
         ) {
             dispatch(deleteTicket({ id: ticketId }));
             console.log(`Ticket with ID ${ticketId} deleted.`);
+            toast.success("Delete ticket success", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
     };
-
-    const handleEditTicket = (ticketId) => {};
 
     useEffect(() => {
         dispatch(getTickets(currentPage, 10));
@@ -55,6 +73,7 @@ export default function TicketTable() {
 
     return (
         <div className={cx("table-container")}>
+            {onOpenEdit && <EditTicket data={ticket} />}
             <table className={cx("table-ticket")}>
                 <thead>
                     <tr>
@@ -91,7 +110,11 @@ export default function TicketTable() {
                                     <td>{ticket.ticketStatus}</td>
                                     <td>
                                         <button
-                                            onClick={handleEditTicket}
+                                            onClick={() =>
+                                                handleEditTicket({
+                                                    data: ticket,
+                                                })
+                                            }
                                             className={cx("btn-edit")}
                                         >
                                             Edit
