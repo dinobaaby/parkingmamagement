@@ -75,7 +75,7 @@ export const sidebarNavItems = [
             },
             {
                 name: "BankTransfer",
-                link: "/tickets/banktransfer",
+                link: "/payment/banktransfer",
             },
         ],
     },

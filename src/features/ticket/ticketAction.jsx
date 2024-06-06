@@ -9,8 +9,8 @@ import {
     UPDATE_TICKET_REQUEST,
     UPDATE_TICKET_SUCCESS,
     UPDATE_TICKET_FAILURE,
-    DELETE_TICKET_SUCCESS,
     DELETE_TICKET_REQUEST,
+    DELETE_TICKET_SUCCESS,
     DELETE_TICKET_FAILURE,
     CHECKIN_TICKET_REQUEST,
     CHECKIN_TICKET_SUCCESS,
@@ -28,7 +28,7 @@ import {
 
 import axios from "axios";
 
-export const getTicketRequset = () => {
+export const getTicketRequest = () => {
     return {
         type: GET_ALL_TICKET_REQUEST,
     };
@@ -49,7 +49,7 @@ export const getTicketFailure = (error) => {
 
 export const getTickets = (pageIndex, pageSize) => {
     return async (dispatch, getState) => {
-        dispatch(getTicketRequset());
+        dispatch(getTicketRequest());
         try {
             const res = await axios.get(TICKET_API.GETALL, {
                 params: {
